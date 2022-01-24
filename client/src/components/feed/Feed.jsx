@@ -3,7 +3,6 @@ import axios from "axios";
 import Post from "../post/Post";
 import Share from "../share/Share";
 import "./feed.css";
-import { Posts } from "../../dummyData";
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
@@ -11,7 +10,7 @@ const Feed = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get("/posts/timeline/61e9b7d571090ca3b43b227d");
-      console.log(res);
+      setPosts(res.data);
     };
     fetchPosts();
   }, []);
@@ -20,9 +19,9 @@ const Feed = () => {
     <div className="feed">
       <div className="feedWrapper">
         <Share />
-        {/* {Posts.map((post) => (
+        {posts.map((post) => (
           <Post key={post.id} post={post} />
-        ))} */}
+        ))}
       </div>
     </div>
   );
