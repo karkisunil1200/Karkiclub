@@ -3,6 +3,8 @@ import { Users } from "../../dummyData";
 import Online from "../online/Online";
 
 const RightBar = ({ profile }) => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const HomeRightBar = () => {
     return (
       <>
@@ -46,7 +48,7 @@ const RightBar = ({ profile }) => {
         <div className="rightbarFollowings">
           <div className="rightbarFollowing">
             <img
-              src="assets/person/Hari.jpeg"
+              src={`${PF}person/Hari.jpeg`}
               alt=""
               className="rightbarFollowingImg"
             />
@@ -54,7 +56,7 @@ const RightBar = ({ profile }) => {
           </div>
           <div className="rightbarFollowing">
             <img
-              src="assets/person/devi.jpeg"
+              src={`${PF}person/devi.jpeg`}
               alt=""
               className="rightbarFollowingImg"
             />
@@ -62,7 +64,7 @@ const RightBar = ({ profile }) => {
           </div>
           <div className="rightbarFollowing">
             <img
-              src="assets/person/fupu.jpeg"
+              src={`${PF}person/fupu.jpeg`}
               alt=""
               className="rightbarFollowingImg"
             />
@@ -70,7 +72,7 @@ const RightBar = ({ profile }) => {
           </div>
           <div className="rightbarFollowing">
             <img
-              src="assets/person/leena.jpeg"
+              src={`${PF}person/leena.jpeg`}
               alt=""
               className="rightbarFollowingImg"
             />
@@ -78,7 +80,7 @@ const RightBar = ({ profile }) => {
           </div>
           <div className="rightbarFollowing">
             <img
-              src="assets/person/nista.jpeg"
+              src={`${PF}person/nista.jpeg`}
               alt=""
               className="rightbarFollowingImg"
             />
@@ -86,7 +88,7 @@ const RightBar = ({ profile }) => {
           </div>
           <div className="rightbarFollowing">
             <img
-              src="assets/person/pradeep.jpeg"
+              src={`${PF}person/pradeep.jpeg`}
               alt=""
               className="rightbarFollowingImg"
             />
