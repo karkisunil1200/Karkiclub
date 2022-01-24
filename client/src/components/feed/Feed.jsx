@@ -9,14 +9,11 @@ const Feed = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const fetchPost = async () => {
-      const res = await axios.get(
-        "https://localhost:8800/api/posts/timeline/61e9c5faf6f592984f0295b2"
-      );
+    const fetchPosts = async () => {
+      const res = await axios.get("/posts/timeline/61e9b7d571090ca3b43b227d");
       console.log(res);
     };
-
-    fetchPost();
+    fetchPosts();
   }, []);
 
   return (
