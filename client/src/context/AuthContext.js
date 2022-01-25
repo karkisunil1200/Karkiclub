@@ -1,10 +1,9 @@
-import { useReducer } from "react";
-import { createContext } from "react";
+import { useReducer, createContext } from "react";
 import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
   user: null,
-  isFecthing: false,
+  isFetching: false,
   error: false,
 };
 
@@ -15,10 +14,11 @@ export const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      vlaue={{
+      value={{
         user: state.user,
-        isFetching: state.isFetcing,
+        isFetching: state.isFetching,
         error: state.error,
+        dispatch,
       }}
     >
       {children}
