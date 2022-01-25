@@ -5,8 +5,14 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Link } from "react-router-dom";
 
 import "./topbar.css";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { Users } from "../../dummyData";
 
 const Topbar = () => {
+  const user = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -44,7 +50,18 @@ const Topbar = () => {
             <span className="topbarIconBadge">3</span>
           </div>
         </div>
-        <img src="/assets/person/allina.jpeg" alt="" className="topbarImg" />
+        {/*if there is no profile pic then use local skeleton pic */}
+        <Link to={`/profile/${user.username}`}>
+          <img
+            src={
+              user.profilePicture
+                ? PF + user.profilePicture
+                : PF + "person/noAvatar.png"
+            }
+            alt=""
+            className="topbarImg"
+          />
+        </Link>
       </div>
     </div>
   );
