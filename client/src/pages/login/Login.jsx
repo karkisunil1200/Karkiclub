@@ -1,13 +1,14 @@
 import { useContext, useRef } from "react";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import "./login.css";
 
 const Login = () => {
   const email = useRef();
   const password = useRef();
-  const { user, isFetciing, error, dispatch } = useContext(AuthContext);
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const Login = () => {
     );
   };
 
-  console.log(user);
+  console.log(isFetching);
 
   return (
     <div>
@@ -46,7 +47,9 @@ const Login = () => {
                 ref={password}
                 required
               />
-              <button className="loginButton">Log In</button>
+              <button className="loginButton">
+                {isFetching ? <CircularProgress color="secondary" /> : "Log in"}
+              </button>
               <span className="loginForgot">Forgot Password?</span>
               <button className="loginRegisterButton">
                 Create New Account
