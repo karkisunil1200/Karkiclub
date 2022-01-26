@@ -25,7 +25,7 @@ const Messenger = () => {
           <div className="chatBoxWrapper">
             <div className="chatboxTop">
               <Message />
-              <Message />
+              <Message own={true} />
               <Message />
             </div>
             <div className="chatboxBottom"></div>

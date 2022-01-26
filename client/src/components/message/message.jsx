@@ -2,7 +2,7 @@ import "./message.css";
 
 const Message = ({ own }) => {
   return (
-    <div className="message own">
+    <div className={own ? "message own" : "message"}>
       <div className="messageTop">
         <img
           className="messageImg"
