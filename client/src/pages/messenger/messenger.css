@@ -16,10 +16,12 @@
 
 .chatBox {
   flex: 5.5;
+  border: solid 1px palegreen;
 }
 
 .chatOnline {
   flex: 3;
+  border: 1px solid blue;
 }
 .chatMenuWrapper,
 .chatBoxWrapper,
