@@ -7,10 +7,9 @@ import { Link } from "react-router-dom";
 import "./topbar.css";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { Users } from "../../dummyData";
 
 const Topbar = () => {
-  const user = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (
