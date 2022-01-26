@@ -1,14 +1,23 @@
 import "./rightbar.css";
 import { Users } from "../../dummyData";
 import Online from "../online/Online";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
 const RightBar = ({ user }) => {
   const [friends, setFriends] = useState([]);
+  const [followed, setFollowed] = useState(false);
+  const { user: currentUser, dispatch } = useContext(AuthContext);
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  // useEffect(() => {
+  //   setFollowed(currentUser.followings.includes(user?.id));
+  // }, [currentUser, user.id]);
 
   useEffect(() => {
     const getFriends = async () => {
@@ -42,9 +51,33 @@ const RightBar = ({ user }) => {
     );
   };
 
+  const handleClick = async (e) => {
+    // if you already follow this user then unfollo
+    try {
+      if (followed) {
+        await axios.put(`/users/${user._id}/unfollow`, {
+          userId: currentUser._id,
+        });
+        dispatch({ type: "UNFOLLOW", payload: user._id });
+      } else {
+        await axios.put(`/users/${user._id}/follow`);
+        dispatch({ type: "FOLLOW", payload: user._id });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    setFollowed(!followed);
+  };
+
   const ProfileRightBar = () => {
     return (
       <>
+        {user.username !== currentUser.username && (
+          <button className="rightbarFollowButton" onClick={handleClick}>
+            {followed ? "Unfollow" : "follow"}
+            {followed ? <RemoveCircleIcon /> : <AddIcon />}
+          </button>
+        )}
         <h4 className="rightbarTitle">User information</h4>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
@@ -70,7 +103,13 @@ const RightBar = ({ user }) => {
         <h4 className="rightbarTitle">User Friend</h4>
         <div className="rightbarFollowings">
           {friends.map((friend) => (
-            <Link to={`/profile/${friend.username}`}>
+            <Link
+              to={`/profile/${friend.username}`}
+              style={{
+                textDecoration: "none",
+                color: "black",
+              }}
+            >
               <div className="rightbarFollowing">
                 <img
                   src={

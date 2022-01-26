@@ -31,7 +31,8 @@ const Feed = ({ username }) => {
   return (
     <div className="feed">
       <div className="feedWrapper">
-        <Share />
+        {/*if there is no username or or */}
+        {(!username || username === user.username) && <Share />}
         {posts.map((post) => (
           <Post key={post._id} post={post} />
         ))}
