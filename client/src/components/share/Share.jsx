@@ -15,15 +15,32 @@ const Share = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    console.log("In submit handler 1st level");
 
     const newPost = {
       userId: user._id,
       desc: desc.current.value,
     };
 
+    if (file) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append("name", fileName);
+      data.append("file", file);
+      newPost.img = fileName;
+      console.log("File was found");
+
+      try {
+        await axios.post("/upload", data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
     try {
       await axios.post("/posts", newPost);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
