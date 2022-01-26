@@ -10,8 +10,10 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
 const RightBar = ({ user }) => {
   const [friends, setFriends] = useState([]);
-  const [followed, setFollowed] = useState(false);
   const { user: currentUser, dispatch } = useContext(AuthContext);
+  const [followed, setFollowed] = useState(
+    currentUser.followings.includes(user?.id)
+  );
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
@@ -22,7 +24,7 @@ const RightBar = ({ user }) => {
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendList = await axios.get(`/users/friends/${user._id}`);
+        const friendList = await axios.get("/users/friends/" + user._id);
         setFriends(friendList.data);
       } catch (err) {
         console.log(err);
