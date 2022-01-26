@@ -60,46 +60,6 @@ const RightBar = ({ user }) => {
             />
             <span className="rightbarFollowingName">Hari Karki</span>
           </div>
-          <div className="rightbarFollowing">
-            <img
-              src={`${PF}person/devi.jpeg`}
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Hari Karki</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src={`${PF}person/fupu.jpeg`}
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Hari Karki</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src={`${PF}person/leena.jpeg`}
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Hari Karki</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src={`${PF}person/nista.jpeg`}
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Hari Karki</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src={`${PF}person/pradeep.jpeg`}
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Hari Karki</span>
-          </div>
         </div>
       </>
     );

@@ -30,12 +30,20 @@ const Profile = () => {
             <div className="profileCover">
               <img
                 className="profileCoverImage"
-                src={user.coverPicture || PF + "person/noCover.png"}
+                src={
+                  user.coverPicture
+                    ? PF + user.coverPicture
+                    : PF + "person/noCover.png"
+                }
                 alt=""
               />
               <img
                 className="profileUserImage"
-                src={user.profilePicture || PF + "person/noAVatar.png"}
+                src={
+                  user.profilePicture
+                    ? PF + user.profilePicture
+                    : PF + "person/noAVatar.png"
+                }
                 alt=""
               />
             </div>
