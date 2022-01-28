@@ -12,8 +12,9 @@ const Conversation = ({ conversations, currentUser }) => {
     const getUser = async () => {
       console.log("first of get user");
       try {
-        const res = await axios.get(`users?userId=` + friendId);
+        const res = await axios.get(`/users?userId=` + friendId);
         setUser(res.data);
+        console.log(res.data);
       } catch (err) {
         console.log(err);
       }
@@ -23,13 +24,7 @@ const Conversation = ({ conversations, currentUser }) => {
 
   return (
     <div className="conversation">
-      <img
-        className="conversationImg"
-        src={
-          user.profilePicture ? user.profilePicture : PF + "person/noAvatar.png"
-        }
-        alt=""
-      />
+      <img className="conversationImg" src={"person/noAvatar.png"} alt="" />
       <span className="conversationName">{user.username}</span>
     </div>
   );

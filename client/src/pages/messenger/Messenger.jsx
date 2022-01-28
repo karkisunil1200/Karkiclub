@@ -9,13 +9,15 @@ import axios from "axios";
 
 const Messenger = () => {
   const [conversations, setConversations] = useState([]);
+  const [currentChat, setCurrentChat] = useState([]);
+  const [messages, setMessages] = useState([]);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const getConversations = async () => {
       try {
         const res = await axios.get(`conversations/${user._id}`);
-        console.log(res.data);
+
         setConversations(res.data);
       } catch (err) {
         console.log(err);
@@ -35,9 +37,10 @@ const Messenger = () => {
               className="chatMenuInput"
               placeholder="Search for friends"
             />
-            {conversations.map((conv) => (
-              <Conversation conversations={conv} currentUser={user} />
-            ))}
+            {conversations.map((conv) => {
+              console.log(conv);
+              return <Conversation conversations={conv} currentUser={user} />;
+            })}
           </div>
         </div>
         <div className="chatBox">
