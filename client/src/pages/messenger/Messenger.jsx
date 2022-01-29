@@ -38,8 +38,14 @@ const Messenger = () => {
               placeholder="Search for friends"
             />
             {conversations.map((conv) => {
-              console.log(conv);
-              return <Conversation conversations={conv} currentUser={user} />;
+              console.log(user);
+              return (
+                <Conversation
+                  key={user._id}
+                  conversation={conv}
+                  currentUser={user}
+                />
+              );
             })}
           </div>
         </div>
